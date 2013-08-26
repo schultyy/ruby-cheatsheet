@@ -2,10 +2,12 @@
 
 ## Iterators
 
+```Ruby
     a_list.each do |item|
       #Inside of block
       #we can work with item
     end
+```
 
 ## object_id
 
