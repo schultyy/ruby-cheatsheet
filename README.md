@@ -81,3 +81,41 @@ A method call is really a *message* to another object:
     # Which is the same as this:
     1.send "+", 2
 ```
+
+## Get all instance methods
+
+### Returns all methods
+```Ruby
+    > Greeter.instance_methods
+    => ["method", "send", "object_id", ...]
+```
+### Returns only instance methods
+```Ruby
+    > Greeter.instance_methods(false)
+    => ["say_hello", "say_goodbye"]
+```
+### Check if an object responds to a method
+```Ruby
+    > g.respond_to?("foo")
+    => false
+```
+
+### Duck typing
+```Ruby
+    def say_goodbye
+        if @names.nil?
+            puts "..."
+        elsif @names.respond_to?("join")
+            #Check if names respond to types. Here the actual type of @names does not matter
+            puts "Cia, #{@names.join(", ")}
+        else
+            puts "Ciao #{@names}"
+        end
+    end
+```
+### Entry point for scripts
+
+```Ruby
+    if __FILE__ == $0
+    end
+```
