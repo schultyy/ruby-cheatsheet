@@ -42,3 +42,42 @@ Method names are allowed to start with capital letters:
     puts Constant   #10
     puts Constant() #11
 ```
+
+## Keyword arguments (Ruby 2.0)
+
+```Ruby
+    def deliver(from: 'A', to: nil, via: 'mail')
+        "Sending from #{from} to #{to} via #{via}."
+    end
+    
+    > deliver(to: 'B')
+    => "Sending from A to B via mail."
+    > deliver(via: 'Pony Express', from: 'B', to: 'A')
+    => "Sending from B to A via Pony Express."
+```
+
+## The universal truth
+
+Everything except `nil` and `false` is considered `true`.
+
+```Ruby
+    if 0
+        puts "0 is true"
+    else
+        puts "0 is false"
+    end
+    
+    #0 is true
+```
+
+## Message passing, not functions calls
+
+A method call is really a *message* to another object:
+
+```Ruby
+    1 + 2
+    # is the same like
+    1.+(2)
+    # Which is the same as this:
+    1.send "+", 2
+```
