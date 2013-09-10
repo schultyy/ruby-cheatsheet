@@ -119,3 +119,12 @@ A method call is really a *message* to another object:
     if __FILE__ == $0
     end
 ```
+
+### Parse Yaml files
+
+```Ruby
+    require 'yaml'
+    
+    config = YAML.load_file('config.yml')
+    puts config.inspect
+```
