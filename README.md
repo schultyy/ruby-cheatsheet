@@ -120,7 +120,7 @@ A method call is really a *message* to another object:
     end
 ```
 
-### Parse Yaml files
+## Parse Yaml files
 
 ```Ruby
     require 'yaml'
@@ -128,3 +128,56 @@ A method call is really a *message* to another object:
     config = YAML.load_file('config.yml')
     puts config.inspect
 ```
+
+## Shell Commands
+
+### Exec
+Replaces the current process by running the given command. 
+
+```Bash
+    $ irb
+    >> exec 'echo "hello $HOSTNAME"'
+    hello nate.local
+    $
+```
+
+### System
+The `system` command operates similarly but runy in a subshell instead of replacing the current process.
+`system` returns a little more information than `exec` in that it returns `true` if the command ran successfully or `false` otherwise.
+
+```Bash
+
+    $ irb
+    >> system 'echo "Hello $HOSTNAME"'
+    hello nate.local
+    => true
+    >> system 'false'
+    => false
+    >> puts $?
+    256
+    => nil
+    >>
+```
+
+`system` sets the global variable `$0` to the exit status of the process. Notice that we have the exit status of 
+the `false` command (which always exits with a non-zero code). 
+
+** Note: Unix commands typically exit with a status of `0` on success and non-zero otherwise.**
+
+### Backticks(`)
+
+Backticks (also called "backquotes") runs the command in a subshell and returns the standard output from that command.
+
+```Bash
+    $ irb
+    >> today = `date`
+    => "Monday..."
+    >> $?
+    => #<Process::Status: pid=25827, exited(0)>
+    >> $?.to_i
+    => 0
+```
+
+**Note: `$?` is not simply an integer of the return status but actually a `Process::Status` object. **
+
+One consequence of using backticks is that only *standard output* (`stdout`)  of this command is available but not `stderr`.
