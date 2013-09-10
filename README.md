@@ -162,7 +162,7 @@ The `system` command operates similarly but runy in a subshell instead of replac
 `system` sets the global variable `$0` to the exit status of the process. Notice that we have the exit status of 
 the `false` command (which always exits with a non-zero code). 
 
-** Note: Unix commands typically exit with a status of `0` on success and non-zero otherwise. **
+> Note: Unix commands typically exit with a status of `0` on success and non-zero otherwise.
 
 ### Backticks(`)
 
@@ -178,6 +178,6 @@ Backticks (also called "backquotes") runs the command in a subshell and returns 
     => 0
 ```
 
-* Note: `$?` is not simply an integer of the return status but actually a `Process::Status` object. *
+> Note: `$?` is not simply an integer of the return status but actually a `Process::Status` object.
 
 One consequence of using backticks is that only *standard output* (`stdout`)  of this command is available but not `stderr`.
