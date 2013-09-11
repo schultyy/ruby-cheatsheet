@@ -257,3 +257,10 @@ Even this can get repetitive. When you want both reader and writer just use acce
 	person.name # => "Boo"
 
 ```
+
+## irb
+### Reload file in irb
+
+```irb
+>> load 'myfile.rb'
+```
