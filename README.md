@@ -181,3 +181,79 @@ Backticks (also called "backquotes") runs the command in a subshell and returns 
 > Note: `$?` is not simply an integer of the return status but actually a `Process::Status` object.
 
 One consequence of using backticks is that only *standard output* (`stdout`)  of this command is available but not `stderr`.
+
+## Classes
+
+### attr_accessor
+
+Let's say there is a class `Person`:
+
+```Ruby
+
+    class Person
+    end
+    
+    person = Person.new
+    person.name # => no method error
+
+```
+
+Obviously we never defined method `name`. Let's do that.
+
+```Ruby
+
+    class Person
+        def name
+            @name #Simply returning an instance variable @name
+        end
+    end
+
+person = Person.new
+person.name # => nil
+person.name = "Boo" # => no method error
+
+```
+
+We can read the name but that doesn't mean we can assign a name. Former called **reader** and latter called **writer**. Let's create a writer:
+
+```Ruby
+
+	class PErson
+		def name
+			@name #Returns instance variable @name
+		end
+		
+		def name=(str)
+			@name = str
+		end
+		
+		person = Person.new
+		person.name = "Boo"
+		person.name # => "Boo"
+	end
+```
+
+Now we can read and write instance variable `@name` using reader and writer methods. Except, this is done so frequently, why waste time writin these methods every time? We can do it easier.
+
+```Ruby
+	
+	class Person
+		attr_reader :name
+		attr_writer :name
+	end
+	
+```
+
+Even this can get repetitive. When you want both reader and writer just use accessor!
+
+```Ruby
+
+	class Person
+		attr_accessor :name
+	end
+	
+	person = Person.new
+	person.name = "Boo"
+	person.name # => "Boo"
+
+```
