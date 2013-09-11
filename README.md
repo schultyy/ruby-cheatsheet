@@ -218,7 +218,7 @@ We can read the name but that doesn't mean we can assign a name. Former called *
 
 ```Ruby
 
-	class PErson
+	class Person
 		def name
 			@name #Returns instance variable @name
 		end
