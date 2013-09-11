@@ -264,3 +264,26 @@ Even this can get repetitive. When you want both reader and writer just use acce
 ```irb
 >> load 'myfile.rb'
 ```
+
+## Filesystem
+
+### Get absolute path of a file
+
+```Ruby
+  require 'pathname'
+  
+  abspath = Pathname.new("my_fancy_file.txt")
+  puts abspath.realpath.to_s
+```
+
+### Combine pathnames
+```Ruby
+  File.join("/Users/John/Foo", "Bar", "Baz")
+```
+
+### Strip file extensions
+```Ruby
+  def strip_file_ext(filename)
+    filename.chomp(File.extname(filename))
+  end
+```
