@@ -276,6 +276,14 @@ Even this can get repetitive. When you want both reader and writer just use acce
   puts abspath.realpath.to_s
 ```
 
+### Get filename from path
+
+```Ruby
+  require 'pathname'
+  basename = Pathname.new("/opt/local/bin/ruby").basename
+  basename == "ruby"
+```
+
 ### Combine pathnames
 ```Ruby
   File.join("/Users/John/Foo", "Bar", "Baz")
