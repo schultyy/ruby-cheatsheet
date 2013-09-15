@@ -295,3 +295,29 @@ Even this can get repetitive. When you want both reader and writer just use acce
     filename.chomp(File.extname(filename))
   end
 ```
+
+## Exception handling
+
+### Basic handling
+
+```Ruby
+  def foo
+    begin
+      #....
+    rescue
+      #Exception handling goes here
+    end
+  end
+```
+
+### Get the exception object
+
+```Ruby
+  def foo
+    begin
+      #....
+    rescue Exception => e
+      #Exception handling goes here
+    end
+  end
+```
