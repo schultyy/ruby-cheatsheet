@@ -1,5 +1,13 @@
 # ruby-cheatsheet
 
+## Strings
+
+### Test if string is empty
+
+```Ruby
+	foo.empty?
+```
+	
 ## Iterators
 
 ```Ruby
