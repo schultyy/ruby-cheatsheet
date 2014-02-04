@@ -1,5 +1,24 @@
 # ruby-cheatsheet
 
+## Delegators
+
+```Ruby
+  class Engine
+    attr_accessor :horse_powers
+    def initialize(hp)
+      @horse_powers = hp
+    end
+  end
+  
+  class Car
+    def_delegator :@engine, :hp, :horse_powers
+  
+    def initialize()
+      @engine = Engine.new
+    end
+  end
+```
+
 ## Strings
 
 ### Test if string is empty
